@@ -1,0 +1,69 @@
+.events{
+	font-size: 30px;
+	color: cadetblue;
+	text-decoration: underline #2b544b;
+}
+.city{
+	text-decoration: none;
+	font-size: 23px;
+	color: black;
+}
+.event_of_city{
+	background-color: #9abcbd;
+
+}
+.event_events{
+	font-size: 22px;
+	font-weight: bolder;
+}
+.event_name{
+	font-size: 18px;
+	font-weight: bold;
+}
+img{
+	width: 640px;
+	height: 480px;
+	object-fit: cover;
+}
+
+ol {
+	list-style-type: none;
+	counter-reset: num;
+	margin: 0 0 0 60px;
+	padding: 15px 0 5px 0;
+	font-size: 16px;
+	position: relative;
+}
+ol li {
+	position: relative;
+	margin: 0 0 0 0;
+	padding: 0 0 10px 0;
+	line-height: 1.4;
+}
+ol li:before {
+	content: counter(num);
+	counter-increment: num;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: -55px;
+	width: 28px;
+	height: 28px;
+	background: #fff;
+	color: #000;
+	text-align: center;
+	line-height: 28px;
+	font-size: 18px;
+	border-radius: 50%;
+	border: 1px solid #2b544b;
+}
+/* Вертикальная линия */
+ol:before {
+	content: '';
+	position: absolute;
+	top: 15px;
+	bottom: 15px;
+	left: -15px;
+	width: 1px;
+	border-left: 1px solid #2b544b;
+}

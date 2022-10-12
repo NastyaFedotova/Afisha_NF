@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Мероприятия по городам{% endblock %}
+
+{% block content %}
+    <div class="events">Праздники мира по городам</div>
+        <ol type="1">
+        {% for city in data.cities %}
+           {% include 'city_element.html' with element=city %}
+        {% empty %}
+            <li>Список пуст</li>
+        {% endfor %}
+        </ol>
+{% endblock %}
