@@ -70,14 +70,6 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
-class Cities(models.Model):
-    city = models.CharField(max_length=30)
-
-    class Meta:
-        managed = False
-        db_table = 'cities'
-
-
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
     object_id = models.TextField(blank=True, null=True)
@@ -122,12 +114,46 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
-class Events(models.Model):
-    city = models.CharField(max_length=30)
-    event_title = models.CharField(max_length=100)
-    description = models.CharField(max_length=255)
-    img = models.CharField(max_length=255)
+
+class Event(models.Model):
+    id_event = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    price = models.FloatField()
+    description = models.CharField(max_length=255, blank=True, null=True)
+    date_event = models.DateTimeField()
+    duration = models.FloatField()
 
     class Meta:
         managed = False
-        db_table = 'events'
+        db_table = 'event'
+
+
+class Ticket(models.Model):
+    id_event = models.IntegerField(primary_key=True)
+    id_user = models.IntegerField()
+    amount = models.IntegerField()
+    date_of_buying = models.DateTimeField()
+    booking_date = models.DateTimeField()
+    ticket_status = models.CharField(max_length=6)
+
+    class Meta:
+        managed = False
+        db_table = 'ticket'
+        unique_together = (('id_event', 'id_user'),)
+
+
+class User(models.Model):
+    id_user = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=30)
+    second_name = models.CharField(max_length=30)
+    phone = models.CharField(unique=True, max_length=12)
+    email = models.CharField(max_length=30, db_collation='utf32_general_ci')
+    personal_sale = models.IntegerField(blank=True, null=True)
+    login = models.CharField(unique=True, max_length=30)
+    password = models.CharField(unique=True, max_length=30)
+    user_status = models.CharField(max_length=12)
+    date_registration = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'user'

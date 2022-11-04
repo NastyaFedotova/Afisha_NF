@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ data.event }}{% endblock %}
+
+{% block content %}
+    <div class="event_information">
+            <div>Мероприятие - {{data.name}}</div>
+            <div>Дата проведения - {{data.date_event}}</div>
+            <div>Описание - {{ data.description }}</div>
+            <div>Цена: {{ data.price }}руб.</div>
+            <div>Продолжительность мероприятия: {{ data.duration }} ч.</div>
+
+    </div>
+{% endblock %}
+

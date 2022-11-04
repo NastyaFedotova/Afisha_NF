@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_cities',
+        'NAME': 'db_events',
         'USER': 'nastya_fed',
         'PASSWORD': 'loV!8cS7',
         'HOST': 'localhost',

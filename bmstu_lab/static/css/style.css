@@ -3,12 +3,12 @@
 	color: cadetblue;
 	text-decoration: underline #2b544b;
 }
-.city{
+.event{
 	text-decoration: none;
 	font-size: 23px;
 	color: black;
 }
-.event_of_city{
+.event_information{
 	background-color: #9abcbd;
 
 }
