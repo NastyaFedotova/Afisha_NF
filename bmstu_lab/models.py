@@ -117,7 +117,7 @@ class DjangoSession(models.Model):
 
 class Event(models.Model):
     id_event = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, verbose_name='Название мероприятия')
     price = models.FloatField()
     description = models.CharField(max_length=255, blank=True, null=True)
     date_event = models.DateTimeField()
@@ -129,9 +129,10 @@ class Event(models.Model):
 
 
 class Ticket(models.Model):
-    id_event = models.IntegerField(primary_key=True)
-    id_user = models.IntegerField()
-    amount = models.IntegerField()
+    id_ticket = models.AutoField(primary_key=True)
+    id_event = models.ForeignKey(Event, models.DO_NOTHING, db_column='id_event', verbose_name='Мероприятие')
+    id_user = models.ForeignKey('User', models.DO_NOTHING, db_column='id_user')
+    amount = models.IntegerField(verbose_name='Кол-во штук')
     date_of_buying = models.DateTimeField()
     booking_date = models.DateTimeField()
     ticket_status = models.CharField(max_length=6)
@@ -139,12 +140,11 @@ class Ticket(models.Model):
     class Meta:
         managed = False
         db_table = 'ticket'
-        unique_together = (('id_event', 'id_user'),)
 
 
 class User(models.Model):
     id_user = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30, verbose_name='Имя пользователя')
     second_name = models.CharField(max_length=30)
     phone = models.CharField(unique=True, max_length=12)
     email = models.CharField(max_length=30, db_collation='utf32_general_ci')

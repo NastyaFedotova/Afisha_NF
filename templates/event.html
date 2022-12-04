@@ -11,4 +11,9 @@
             <div>Продолжительность мероприятия: {{ data.duration }} ч.</div>
 
     </div>
+    <form action="{% url 'delete_event' id=data.id_event %}">
+        <button type="submit" class="btn">
+            Удалить мероприятие - {{ data.name }}
+        </button>
+    </form>
 {% endblock %}
