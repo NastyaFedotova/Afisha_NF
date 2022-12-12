@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from bmstu_lab.models import Event
 from bmstu_lab.models import Ticket
-from bmstu_lab.models import User
+
 
 def DeleteEvent(request,id):
     tickets = Ticket.objects.filter(id_event=id)
